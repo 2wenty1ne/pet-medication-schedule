@@ -80,8 +80,8 @@ const MedicationRow: React.FC<MedicationRowProps> = ({
 
   if (currentEntry && isChecked) {
     const checkedDateObject = new Date(currentEntry?.updated_at)
-    const hour = checkedDateObject.getHours();
-    const minutes = checkedDateObject.getMinutes();
+    const hour = checkedDateObject.getHours().toString().padStart(2, '0');
+    const minutes = checkedDateObject.getMinutes().toString().padStart(2, '0');
 
     checkedDateString = `${hour}:${minutes}`
   }

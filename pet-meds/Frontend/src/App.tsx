@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import './App.css'
 import DayTile from './day-tile';
-import { dateToString, sendRequest } from './helper';
+import { dateToString, getIPWithVersion, sendRequest } from './helper';
 import type { ApiResponse, TemplateResponse } from './types';
 import { NamePicker } from './namePicker';
 import { useNameStore } from './store';
@@ -20,8 +20,9 @@ function App() {
 
   //? WEBSOCKET
   useEffect(() => {
-    console.log("Connectig to " + `ws://${window.location.host}/api/v1/ws`)
-    const ws = new WebSocket(`ws://${window.location.host}/api/v1/ws`);
+    const wsURL = getIPWithVersion("WebSocket")
+    console.log("Connectig to " + wsURL)
+    const ws = new WebSocket(wsURL);
 
     ws.onopen = () => {
       console.log("Websocket connected")

@@ -1,3 +1,4 @@
+export type IPDestination = "WebSocket" | "Request"
 
 export type ApiResponse<T> = {
   success: boolean;

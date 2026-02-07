@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	err := godotenv.Load("./../.env")
+	err := godotenv.Load("./.env")
 	if err != nil {
 		log.Println("No .env file found (this is normal in production)")
 	}
@@ -30,7 +30,14 @@ func GetDevMode() bool {
 }
 
 func GetWebserverPort() string {
-	key := "VITE_WEBSERVER_PORT"
+	devMode := GetDevMode()
+
+	if devMode == false {
+		key := "WEBSERVER_PORT"
+		return readEnvValue(key, "80") 
+	}
+
+	key := "WEBSERVER_DEV_PORT"
 	return readEnvValue(key, "8080")
 }
 

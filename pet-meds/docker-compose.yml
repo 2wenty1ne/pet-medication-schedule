@@ -1,15 +1,9 @@
-# Dev
-Dev version of the docker-compose file
-```Docker
 version: '3.8'
 
 services:
   frontend:
     image: 2wenty1ne/pet-meds-frontend:1.0
     container_name: pet-meds-frontend
-    build:
-      context: ./Frontend
-      dockerfile: Dockerfile
     volumes:
       - static-files:/app/Frontend/dist
     restart: "no"
@@ -17,9 +11,6 @@ services:
   backend:
     image: 2wenty1ne/pet-meds-server:1.0
     container_name: pet-meds-server
-    build:
-      context: ./Server
-      dockerfile: Dockerfile
     volumes:
       - static-files:/app/Server/dist:ro
       - sqlite-data:/app/Server/db
@@ -31,4 +22,3 @@ services:
 volumes:
   static-files:
   sqlite-data:
-```

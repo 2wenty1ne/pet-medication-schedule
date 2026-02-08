@@ -12,7 +12,7 @@ type DBService struct {
 }
 
 func DBConnect() *DBService {
-	db, err := sql.Open("sqlite", "./my.db")
+	db, err := sql.Open("sqlite", "./db/my.db")
 	if err != nil {
 		log.Fatal(err)
 	}

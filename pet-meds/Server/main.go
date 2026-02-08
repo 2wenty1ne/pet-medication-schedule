@@ -33,14 +33,14 @@ func main() {
 	app.Use(logger.New())
 	app.Use(recover.New())
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:8080",
+		AllowOrigins: "http://localhost:8080, http://localhost:5173",
 		AllowMethods: "GET,POST,DELETE,OPTIONS",
 		AllowHeaders: "Content-Type",
 	}))
 
 	Utils.SetupRoutes(app, dbService)
 
-	app.Static("/", "../dist")
+	app.Static("/", "./dist")
 
 	
 	port := Utils.GetWebserverPort()

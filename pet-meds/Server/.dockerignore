@@ -1,0 +1,6 @@
+.env
+Dockerfile
+.dockerignore
+my.db
+my.db-journal
+tmp
